@@ -1,6 +1,7 @@
 package com.example.githubchallenge.di
 
+import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class App : android.app.Application()
+class App : Application()
