@@ -32,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -45,6 +49,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'androidx.fragment:fragment-ktx:1.5.4'
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
     //Navigation component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
@@ -52,6 +58,17 @@ dependencies {
     //dependency injection
     implementation 'com.google.dagger:hilt-android:2.44'
     kapt 'com.google.dagger:hilt-compiler:2.44'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //HTTP
+    implementation 'com.squareup.okhttp3:okhttp:4.+'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.+'
+
+    implementation 'com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.0'
+
 
 }
 
