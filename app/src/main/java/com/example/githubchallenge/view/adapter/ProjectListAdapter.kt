@@ -1,3 +1,45 @@
 package com.example.githubchallenge.view.adapter
 
-class ProjectListAdapter
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.githubchallenge.R
+import com.example.githubchallenge.service.model.Item
+import com.example.githubchallenge.view.callback.OnItemClickListener
+
+class ProjectListAdapter(
+    private var projectsList: List<Item>,
+    private var listener: OnItemClickListener
+) : RecyclerView.Adapter<ProjectsViewHolder>() {
+
+
+    private lateinit var context: Context
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectsViewHolder {
+        context = parent.context
+        val view = LayoutInflater.from(context)
+            .inflate(R.layout.item_project, parent, false)
+        return ProjectsViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ProjectsViewHolder, position: Int) {
+        val item = projectsList[position]
+        holder.bind(item)
+
+    }
+
+    override fun getItemCount(): Int = projectsList.size
+
+}
+
+
+class ProjectsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    fun bind(item: Item) {
+
+    }
+}
+
