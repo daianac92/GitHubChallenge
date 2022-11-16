@@ -1,0 +1,3 @@
+package com.example.githubchallenge.viewmodel
+
+class ProjectListViewModel
