@@ -17,6 +17,7 @@ import javax.inject.Singleton
 open class AppModule {
 
     @Provides
+    @Singleton
     fun initRetrofit(
         httpBuilder: OkHttpClient.Builder,
         gsonProvider: GsonConverterFactory,

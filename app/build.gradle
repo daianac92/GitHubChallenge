@@ -67,7 +67,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.+'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.+'
 
-    implementation 'com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.0'
 
 
 }

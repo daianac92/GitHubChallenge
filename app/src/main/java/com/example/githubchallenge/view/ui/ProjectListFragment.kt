@@ -7,17 +7,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubchallenge.R
 import com.example.githubchallenge.databinding.FragmentProjectListBinding
+import com.example.githubchallenge.service.NetworkStatus
+import com.example.githubchallenge.service.model.Item
+import com.example.githubchallenge.view.adapter.ProjectListAdapter
+import com.example.githubchallenge.view.callback.OnItemClickListener
 import com.example.githubchallenge.viewmodel.ProjectListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProjectListFragment : Fragment() {
+class ProjectListFragment : Fragment(), OnItemClickListener {
 
     private val viewModel by viewModels<ProjectListViewModel>()
     private lateinit var binding: FragmentProjectListBinding
     private val navController by lazy { requireActivity().findNavController(R.id.fragment_container_view) }
+    private lateinit var projectListAdapter: ProjectListAdapter
+
+    private val projects = mutableListOf<Item>()
 
 
     override fun onCreateView(
@@ -31,13 +40,53 @@ class ProjectListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setObservers()
+        getProjects()
         setUpViews()
 
     }
 
-    private fun setUpViews() {
+    private fun setObservers() {
+        viewModel.projectsList.observe(viewLifecycleOwner) {
+            when (it?.status) {
+                NetworkStatus.LOADING -> {}
+                NetworkStatus.SUCCESS -> {
+                    updateList(it.data?.items)
+                }
+                NetworkStatus.ERROR -> TODO()
+                null -> TODO()
+            }
+        }
+    }
+
+    private fun updateList(repositories: List<Item>?) {
+        with(projects) {
+            clear()
+            addAll(repositories ?: emptyList())
+        }
+        binding.rvProjects.adapter?.notifyDataSetChanged()
 
     }
 
 
+    private fun getProjects() {
+        viewModel.getProjects()
+    }
+
+    private fun setUpViews() {
+        projectListAdapter = ProjectListAdapter(projects, this@ProjectListFragment)
+        val manager = LinearLayoutManager(context)
+        binding.rvProjects.apply {
+            layoutManager = manager
+            adapter = projectListAdapter
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+        }
+
+
+    }
 }

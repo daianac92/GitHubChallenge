@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubchallenge.R
+import com.example.githubchallenge.databinding.ItemProjectBinding
 import com.example.githubchallenge.service.model.Item
 import com.example.githubchallenge.view.callback.OnItemClickListener
 
@@ -38,7 +39,13 @@ class ProjectListAdapter(
 
 class ProjectsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+    private val binding = ItemProjectBinding.bind(view)
+
     fun bind(item: Item) {
+        with(binding) {
+            tvProjectTitle.text = item.full_name
+            tvProjectOwner.text = item.owner.login
+        }
 
     }
 }
