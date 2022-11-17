@@ -96,7 +96,14 @@ class ProjectListFragment : Fragment(), AdapterListener,
                 this@ProjectListFragment
             )
             addOnScrollListener(featuredNotificationScrollListener)
-
+        }
+        binding.swipeRefresh.run {
+            setOnRefreshListener {
+                setColorSchemeResources(R.color.purple_500)
+                currentPage = 1
+                viewModel.getProjects(currentPage)
+                isRefreshing = false
+            }
         }
 
 
