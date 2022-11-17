@@ -8,9 +8,9 @@ import javax.inject.Inject
 
 class ProjectsRepository @Inject constructor(private val api: GitHubService) {
 
-    suspend fun getProjects(): Resource<Repositories> {
+    suspend fun getProjects(page: Int): Resource<Repositories> {
         val response = try {
-            api.getRepositories("kotlin", 10, 1)
+            api.getRepositories("kotlin", 10, page)
         } catch (e: Exception) {
             return Resource(NetworkStatus.ERROR, null, e.message)
         } catch (t: HttpException) {

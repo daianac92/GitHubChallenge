@@ -23,18 +23,20 @@ constructor(private val repository: ProjectsRepository) : ViewModel() {
     val projectsList: LiveData<Resource<Repositories>?>
         get() = _projectsList
 
+    private val _currentPage = MutableLiveData<Int>()
+    val currentPage: LiveData<Int>
+        get() = _currentPage
 
     /**
      * Function that gets the list of projects
      */
-    fun getProjects() {
+    fun getProjects(currentPage: Int) {
         _projectsList.value = Resource(NetworkStatus.LOADING)
         viewModelScope.launch {
             _projectsList.value = withContext(Dispatchers.IO) {
-                val response = repository.getProjects()
+                val response = repository.getProjects(currentPage)
                 response
             }
-
         }
 
     }
