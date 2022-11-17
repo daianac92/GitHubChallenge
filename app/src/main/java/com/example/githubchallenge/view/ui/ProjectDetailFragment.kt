@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.githubchallenge.R
 import com.example.githubchallenge.databinding.FragmentProjectDetailBinding
 import com.example.githubchallenge.service.model.Item
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +28,7 @@ class ProjectDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
         getItem()
 
     }
@@ -37,13 +40,35 @@ class ProjectDetailFragment : Fragment() {
 
     private fun setUpViews(item: Item) {
         with(binding) {
-            tvProjectDetailName.text = item.full_name
-            tvProjectDetailOwner.text = item.owner.login
-            tvProjectDetailDescription.text = item.description
-            tvProjectDetailCreatedAt.text = item.created_at
-            tvProjectDetailUpdatedAt.text = item.updated_at
-            tvProjectDetailWatchers.text = item.watchers_count.toString()
-            tvProjectDetailCloneUrl.text = item.clone_url
+            tvProjectDetailName.text =
+                String.format(resources.getString(R.string.projectTitleDetail), item.full_name)
+            tvProjectDetailOwner.text =
+                String.format(resources.getString(R.string.projectOwnerDetail), item.owner.login)
+            tvProjectDetailDescription.text =
+                String.format(
+                    resources.getString(R.string.projectDescriptionDetail),
+                    item.description
+                )
+            tvProjectDetailCreatedAt.text =
+                String.format(
+                    resources.getString(R.string.projectCreatedAtDetail),
+                    item.created_at.substring(0, 10)
+                )
+            tvProjectDetailUpdatedAt.text =
+                String.format(
+                    resources.getString(R.string.projectUpdatedAtDetail),
+                    item.updated_at.substring(0, 10)
+                )
+            tvProjectDetailWatchers.text =
+                String.format(
+                    resources.getString(R.string.projectWatchersDetail),
+                    item.watchers_count.toString()
+                )
+            tvProjectDetailCloneUrl.text =
+                String.format(resources.getString(R.string.projectCloneUrlDetail), item.clone_url)
+            toolbarDetail.setNavigationOnClickListener {
+                parentFragmentManager.popBackStack()
+            }
         }
     }
 }

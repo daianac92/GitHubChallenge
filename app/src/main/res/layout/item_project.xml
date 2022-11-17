@@ -5,7 +5,8 @@
     android:id="@+id/cvProjectItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="10dp"
+    android:layout_margin="5dp"
+    android:elevation="50dp"
     android:padding="15dp">
 
     <TextView
@@ -13,16 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/projectTitleList"
-        android:textSize="20sp"
         android:textStyle="bold"
+        style="@style/Theme.GitHubChallenge.ListTitle"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvProjectTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="20sp"
-        android:textStyle="italic"
+        style="@style/Theme.GitHubChallenge.ListTitle"
         app:layout_constraintTop_toBottomOf="@id/tvProjectName"
         tools:text="XXXXXX" />
 
@@ -32,17 +32,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/projectOwnerList"
-        android:textSize="18sp"
+        style="@style/Theme.GitHubChallenge.ListDescription"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/tvProjectTitle" />
 
     <TextView
         android:id="@+id/tvProjectOwner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        style="@style/Theme.GitHubChallenge.ListDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvProjectTitleOwner"

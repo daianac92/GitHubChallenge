@@ -3,96 +3,121 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="10dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-    <TextView
-        android:id="@+id/tvProjectDetailName"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="25sp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Project Name" />
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
-    <TextView
-        android:id="@+id/tvProjectDetailDescription"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProjectDetailName"
-        tools:text="Project Description" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_detail">
+
+        <ImageView
+            android:id="@+id/icGitHub"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/ic_github"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/blue_700" />
+
+        <TextView
+            android:id="@+id/tvProjectDetailName"
+            style="@style/Theme.GitHubChallenge.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/icGitHub"
+            tools:text="Project Name" />
 
 
-    <TextView
-        android:id="@+id/tvProjectDetailOwner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProjectDetailDescription"
-        tools:text="Project Owner" />
-
-    <TextView
-        android:id="@+id/tvProjectDetailCreatedAt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProjectDetailOwner"
-        tools:text="Project Created At" />
-
-    <TextView
-        android:id="@+id/tvProjectDetailUpdatedAt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProjectDetailCreatedAt"
-        tools:text="Project Updated At" />
+        <TextView
+            android:id="@+id/tvProjectDetailDescription"
+            style="@style/Theme.GitHubChallenge.DetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectDetailName"
+            tools:text="Project Description" />
 
 
-    <TextView
-        android:id="@+id/tvProjectDetailWatchers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProjectDetailUpdatedAt"
-        tools:text="Project Watchers" />
+        <TextView
+            android:id="@+id/tvProjectDetailOwner"
+            style="@style/Theme.GitHubChallenge.DetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectDetailDescription"
+            tools:text="Project Owner" />
 
-    <TextView
-        android:id="@+id/tvProjectDetailCloneUrl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProjectDetailWatchers"
-        tools:text="Project Clone url" />
+        <TextView
+            android:id="@+id/tvProjectDetailCreatedAt"
+            style="@style/Theme.GitHubChallenge.DetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectDetailOwner"
+            tools:text="Project Created At" />
+
+        <TextView
+            android:id="@+id/tvProjectDetailUpdatedAt"
+            style="@style/Theme.GitHubChallenge.DetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectDetailCreatedAt"
+            tools:text="Project Updated At" />
+
+
+        <TextView
+            android:id="@+id/tvProjectDetailWatchers"
+            style="@style/Theme.GitHubChallenge.DetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectDetailUpdatedAt"
+            tools:text="Project Watchers" />
+
+        <TextView
+            android:id="@+id/tvProjectDetailCloneUrl"
+            style="@style/Theme.GitHubChallenge.DetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectDetailWatchers"
+            tools:text="Project Clone url" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
