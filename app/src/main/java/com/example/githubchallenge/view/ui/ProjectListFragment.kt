@@ -17,6 +17,7 @@ import com.example.githubchallenge.view.adapter.EndlessRecyclerViewScrollListene
 import com.example.githubchallenge.view.adapter.ProjectListAdapter
 import com.example.githubchallenge.view.callback.AdapterListener
 import com.example.githubchallenge.viewmodel.ProjectListViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,16 +52,26 @@ class ProjectListFragment : Fragment(), AdapterListener,
     private fun setObservers() {
         viewModel.projectsList.observe(viewLifecycleOwner) {
             when (it?.status) {
-                NetworkStatus.LOADING -> {}
+                NetworkStatus.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
                 NetworkStatus.SUCCESS -> {
+                    binding.progressBar.visibility = View.GONE
                     projectListAdapter.updateList(it.data?.items ?: emptyList())
                     currentPage++
 
                 }
-                NetworkStatus.ERROR -> TODO()
-                null -> TODO()
+                NetworkStatus.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
+                    Snackbar.make(binding.root, "Oh! Error!", Snackbar.LENGTH_SHORT).show()
+
+
+                }
+                null -> {//do nothing
+                }
+
             }
-        }
+    }
     }
 
 
