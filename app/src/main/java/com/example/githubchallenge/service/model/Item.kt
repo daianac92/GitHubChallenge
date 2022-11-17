@@ -1,5 +1,7 @@
 package com.example.githubchallenge.service.model
 
+import java.io.Serializable
+
 data class Item(
     val created_at: String,
     val updated_at: String,
@@ -10,4 +12,4 @@ data class Item(
     val description: String,
     val watchers_count: Int,
     val `private`: Boolean,
-)
+) : Serializable

@@ -1,3 +1,0 @@
-package com.example.githubchallenge.view.callback
-
-interface OnItemClickListener

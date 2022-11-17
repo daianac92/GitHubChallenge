@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubchallenge.R
@@ -14,16 +13,15 @@ import com.example.githubchallenge.databinding.FragmentProjectListBinding
 import com.example.githubchallenge.service.NetworkStatus
 import com.example.githubchallenge.service.model.Item
 import com.example.githubchallenge.view.adapter.ProjectListAdapter
-import com.example.githubchallenge.view.callback.OnItemClickListener
+import com.example.githubchallenge.view.callback.AdapterListener
 import com.example.githubchallenge.viewmodel.ProjectListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProjectListFragment : Fragment(), OnItemClickListener {
+class ProjectListFragment : Fragment(), AdapterListener {
 
     private val viewModel by viewModels<ProjectListViewModel>()
     private lateinit var binding: FragmentProjectListBinding
-    private val navController by lazy { requireActivity().findNavController(R.id.fragment_container_view) }
     private lateinit var projectListAdapter: ProjectListAdapter
 
     private val projects = mutableListOf<Item>()
@@ -89,4 +87,19 @@ class ProjectListFragment : Fragment(), OnItemClickListener {
 
 
     }
+
+    override fun onItemClick(item: Item) {
+        val args = Bundle()
+        args.putSerializable("Project", item)
+        val fragment = ProjectDetailFragment()
+        fragment.arguments = args
+        parentFragmentManager
+            .beginTransaction()
+            .setReorderingAllowed(true)
+            .replace(R.id.fragment_container_view, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+
 }
