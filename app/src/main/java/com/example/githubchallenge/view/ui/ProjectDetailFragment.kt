@@ -29,11 +29,14 @@ class ProjectDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
-        getItem()
+        getItemAndSetUpViews()
 
     }
 
-    private fun getItem() {
+    /**
+     * This function gets the arguments sent and calls the function that renders the view
+     * **/
+    private fun getItemAndSetUpViews() {
         val item = arguments?.getSerializable("Project") as Item
         setUpViews(item)
     }

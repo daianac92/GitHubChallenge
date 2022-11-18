@@ -8,6 +8,9 @@ import javax.inject.Inject
 
 class ProjectsRepository @Inject constructor(private val api: GitHubService) {
 
+    /**Function that make the api call
+     * @param page represents the current page that should be requested from the service.
+     **/
     suspend fun getProjects(page: Int): Resource<Repositories> {
         val response = try {
             api.getRepositories("kotlin", 10, page)

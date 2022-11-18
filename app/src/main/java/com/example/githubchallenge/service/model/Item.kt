@@ -11,5 +11,5 @@ data class Item(
     val name: String,
     val description: String,
     val watchers_count: Int,
-    val `private`: Boolean,
+    val private: Boolean,
 ) : Serializable

@@ -49,6 +49,9 @@ class ProjectListFragment : Fragment(), AdapterListener,
 
     }
 
+    /**
+     * Function that sets the observers
+     * **/
     private fun setObservers() {
         viewModel.projectsList.observe(viewLifecycleOwner) {
             when (it?.status) {
@@ -75,7 +78,7 @@ class ProjectListFragment : Fragment(), AdapterListener,
                 }
 
             }
-    }
+        }
     }
 
 
