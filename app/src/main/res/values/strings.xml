@@ -10,7 +10,10 @@
     <string name="projectUpdatedAtDetail">Updated At: %s</string>
     <string name="projectWatchersDetail">Watchers: %s</string>
     <string name="projectCloneUrlDetail">Clone URL: %s</string>
+    <string name="projectCloneIsPrivate">Private repository: %s</string>
     <string name="title_project_list">KOTLIN PROJECTS</string>
+    <string name="splash_title">GitHub Challenge</string>
+    <string name="splash_name">Daiana Carlantini</string>
 
 
 </resources>

@@ -63,7 +63,11 @@ class ProjectListFragment : Fragment(), AdapterListener,
                 }
                 NetworkStatus.ERROR -> {
                     binding.progressBar.visibility = View.GONE
-                    Snackbar.make(binding.root, "Oh! Error!", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(
+                        binding.root,
+                        "Oh! Error! Try again please",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
 
 
                 }

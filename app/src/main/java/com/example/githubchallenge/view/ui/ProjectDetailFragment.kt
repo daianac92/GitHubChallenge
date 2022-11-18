@@ -66,6 +66,8 @@ class ProjectDetailFragment : Fragment() {
                 )
             tvProjectDetailCloneUrl.text =
                 String.format(resources.getString(R.string.projectCloneUrlDetail), item.clone_url)
+            tvProjectDetailIsPrivate.text =
+                String.format(resources.getString(R.string.projectCloneIsPrivate), item.private)
             toolbarDetail.setNavigationOnClickListener {
                 parentFragmentManager.popBackStack()
             }

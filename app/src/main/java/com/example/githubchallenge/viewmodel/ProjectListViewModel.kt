@@ -23,10 +23,6 @@ constructor(private val repository: ProjectsRepository) : ViewModel() {
     val projectsList: LiveData<Resource<Repositories>?>
         get() = _projectsList
 
-    private val _currentPage = MutableLiveData<Int>()
-    val currentPage: LiveData<Int>
-        get() = _currentPage
-
     /**
      * Function that gets the list of projects
      */

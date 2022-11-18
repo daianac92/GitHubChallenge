@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/blue_700" />
+            app:tint="?colorSecondaryVariant" />
 
         <TextView
             android:id="@+id/tvProjectDetailName"
@@ -117,6 +117,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvProjectDetailWatchers"
             tools:text="Project Clone url" />
+
+
+        <TextView
+            android:id="@+id/tvProjectDetailIsPrivate"
+            style="@style/Theme.GitHubChallenge.DetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectDetailCloneUrl"
+            tools:text="IsPrivate" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
